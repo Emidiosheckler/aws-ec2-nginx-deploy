@@ -1,57 +1,31 @@
-# AWS EC2 + Nginx Deployment
+# AWS WordPress Deployment with Docker
 
-## 📌 Descrição
-Deploy de servidor Ubuntu 22.04 na AWS EC2 com instalação e configuração do Nginx, utilizando acesso remoto via SSH e configuração de Security Group.
+## Overview
+This project demonstrates the deployment of a WordPress application using Docker containers on an AWS EC2 instance running Ubuntu 22.04.
 
----
+## Architecture
+Client → Internet → AWS EC2 → Docker Network → WordPress Container → MySQL Container
 
-## 🏗️ Arquitetura Utilizada
+## Technologies Used
+- AWS EC2
+- Ubuntu 22.04
+- Docker
+- MySQL 5.7
+- WordPress Latest
 
-- AWS EC2 (t2.micro - Free Tier)
-- Ubuntu Server 22.04 LTS
-- Security Group liberando:
-  - Porta 22 (SSH)
-  - Porta 80 (HTTP)
-- Acesso via chave .pem
-- Nginx instalado via apt
+## Deployment Steps
+1. Launched EC2 instance
+2. Installed Docker
+3. Created Docker network
+4. Deployed MySQL container
+5. Deployed WordPress container
+6. Configured port 80 access
 
----
+## Security Configuration
+- Configured Security Group to allow HTTP (Port 80)
+- Isolated containers using Docker network
 
-## 🚀 Passo a Passo Técnico
-
-### 1. Conectar na instância
-
-ssh -i aws-chave.pem ubuntu@IP_PUBLICO
-
-### 2. Atualizar pacotes
-
-sudo apt update
-
-### 3. Instalar Nginx
-
-sudo apt install nginx -y
-
-### 4. Iniciar Nginx
-
-sudo systemctl start nginx
-
-### 5. Verificar status
-
-sudo systemctl status nginx
-
----
-
-## ✅ Resultado
-
-Servidor web acessível publicamente via IP público da instância.
-Página padrão do Nginx funcionando corretamente.
-
----
-
-## 🎯 Objetivo do Projeto
-
-Demonstrar habilidades em:
-- Provisionamento de infraestrutura na AWS
-- Conexão remota via SSH
-- Configuração de servidor Linux
-- Instalação e gerenciamento de serviços web
+## Lessons Learned
+- How to manage port conflicts
+- How to connect containers using Docker networks
+- Basic troubleshooting in cloud environments
