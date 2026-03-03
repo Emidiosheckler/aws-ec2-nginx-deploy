@@ -33,7 +33,8 @@ http://<IP34.227.75.202>
 
 ## Why Docker? 
 
-Docker was used to ensure application portability, environment consistency, and easier deployment management.
+Docker was used to ensure application portability, environment consistency,
+and easier deployment management.
 
 ## Challenges Faced
 
