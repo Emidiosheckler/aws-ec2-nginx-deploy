@@ -31,6 +31,16 @@ http://<IP34.227.75.202>
 - Configured Security Group to allow HTTP (Port 80)
 - Isolated containers using Docker network
 
+## Why Docker? 
+
+Docker was used to ensure application portability, environment consistency, and easier deployment management.
+
+## Challenges Faced
+
+- Port conflict on port 80
+- Docker container naming issues
+- Network connectivity troubleshooting
+
 ## Lessons Learned
 - How to manage port conflicts
 - How to connect containers using Docker networks
