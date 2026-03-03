@@ -13,10 +13,11 @@ Client → Internet → AWS EC2 → Docker Network → WordPress Container → M
 - MySQL 5.7
 - WordPress Latest
 
-## Deployment Steps
-1. Launched EC2 instance
-2. Installed Docker
-3. Created Docker network
+## 🛠 Deployment Step by Step
+
+1. Launch an AWS EC2 Ubuntu 22.04 instance  
+2. Install Docker on the instance  
+3. Create Docker network
 4. Deployed MySQL container
 5. Deployed WordPress container
 6. Configured port 80 access
