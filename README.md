@@ -24,6 +24,15 @@ Client → Internet → AWS EC2 → Docker Network → WordPress Container → M
 4. Deployed MySQL container
 5. Deployed WordPress container
 6. Configured port 80 access
+  
+## Rollback Procedure
+
+If deployment fails, the environment can be safely reset using:
+
+```bash
+sudo docker compose down -v
+sudo docker system prune -a
+```
 
 ## Deployment Commands Used
 
