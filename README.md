@@ -22,6 +22,26 @@ Client → Internet → AWS EC2 → Docker Network → WordPress Container → M
 5. Deployed WordPress container
 6. Configured port 80 access
 
+## Deployment Commands Used
+
+```bash
+sudo docker network create wp_network
+
+sudo docker run -d --name wp_db --network wp_network \
+  -e MYSQL_DATABASE=wordpress \
+  -e MYSQL_USER=wp_user \
+  -e MYSQL_PASSWORD=wp_password \
+  -e MYSQL_ROOT_PASSWORD=root_password \
+  mysql:5.7
+
+sudo docker run -d --name wp_app --network wp_network \
+  -p 80:80 \
+  -e WORDPRESS_DB_HOST=wp_db:3306 \
+  -e WORDPRESS_DB_USER=wp_user \
+  -e WORDPRESS_DB_PASSWORD=wp_password \
+  -e WORDPRESS_DB_NAME=wordpress \
+  wordpress
+
 ## Live   
 ## 🔗 Demo
 Application deployed at:  
