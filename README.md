@@ -25,7 +25,7 @@ Client → Internet → AWS EC2 → Docker Network → WordPress Container → M
 ## Live   
 ## 🔗 Demo
 Application deployed at:  
-http://<IP34.227.75.202>
+http://IP34.227.75.202
 
 ## Security Configuration
 - Configured Security Group to allow HTTP (Port 80)
