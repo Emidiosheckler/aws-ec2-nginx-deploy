@@ -35,7 +35,7 @@ sudo docker run -d --name wp_db --network wp_network \
   -e MYSQL_USER=wp_user \
   -e MYSQL_PASSWORD=wp_password \
   -e MYSQL_ROOT_PASSWORD=root_password \
-  mysql:5.7
+  mysql:8.0
 
 sudo docker run -d --name wp_app --network wp_network \
   -p 80:80 \
@@ -72,8 +72,15 @@ and easier deployment management.
 
 ## About the Author
 
-Cloud enthusiast focused on AWS and Docker deployments.
-This project demonstrates hands-on experience deploying containerized applications on AWS EC2.
+AWS-focused Cloud Engineer with hands-on experience deploying containerized applications using Docker on EC2.
+
+This project demonstrates:
+- Infrastructure provisioning on AWS
+- Container networking
+- Service exposure via public IP
+- Production-style application deployment
+
+Open to remote international opportunities.
 
 
     
