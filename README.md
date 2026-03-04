@@ -47,24 +47,6 @@ and easier deployment management.
 - How to connect containers using Docker networks
 - Basic troubleshooting in cloud environments
 
-flowchart TD
-    Internet((Internet))
-
-    subgraph AWS [AWS Cloud]
-        subgraph EC2 [EC2 Instance]
-            subgraph Docker [Docker Network]
-                WP[WordPress Container]
-                DB[(MySQL Container)]
-            end
-        end
-    end
-
-    Internet -->|HTTP/HTTPS| EC2
-    EC2 --> WP
-    WP -->|Port 3306| DB
-    
-    style WP fill:#21759b,stroke:#fff,stroke-width:2px,color:#fff
-    style DB fill:#e48e00,stroke:#fff,stroke-width:2px,color:#fff
     
     
   
