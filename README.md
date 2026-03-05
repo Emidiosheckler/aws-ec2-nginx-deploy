@@ -7,9 +7,21 @@
 ![WordPress](https://img.shields.io/badge/Deployment-Production-green)
 
 ## Overview
-This project demonstrates the deployment of a WordPress application using Docker containers on an AWS EC2 instance running Ubuntu 22.04.
+# AWS EC2 + Docker WordPress Deployment
+
+Production-ready WordPress deployment using Docker Compose on AWS EC2.
 
 ## Architecture
+
+- AWS EC2 (Ubuntu)
+- Docker Engine (official repository)
+- Docker Compose v2
+- MySQL 8.0 container
+- WordPress latest container
+- Port 80 exposed via Security Group
+
+## Architecture
+## Infrastructure Overview
 Client → Internet → AWS EC2 → Docker Network → WordPress Container → MySQL Container
 
 ##  Technologies Used
