@@ -39,6 +39,29 @@ Client → Internet → AWS EC2 → Docker Network → WordPress Container → M
 4. Deployed MySQL container
 5. Deployed WordPress container
 6. Configured port 80 access
+   
+## Deployment Process
+
+1. Launch EC2 instance (Ubuntu 22.04)
+2. Configure Security Group (Ports 22 and 80)
+3. Install Docker from official repository
+4. Create docker-compose.yml
+5. Run:
+sudo docker compose up -d
+
+## Manual Deployment vs Docker Compose
+
+Manual setup:
+- Individual service installation
+- Harder scaling
+- Harder maintenance
+
+Docker Compose:
+- Infrastructure as Code
+- Version-controlled configuration
+- Faster redeployment
+- Portable environment
+   
   
 ## Rollback Procedure
 
