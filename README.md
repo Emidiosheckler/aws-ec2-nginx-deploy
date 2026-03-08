@@ -1,4 +1,4 @@
-# Production-ready WordPress Deployment with Docker on AWS EC2
+# Production-ready WordPress Deployment with Docker on AWS EC2 
 
 ##
 ![AWS](https://img.shields.io/badge/AWS-EC2-orange)
@@ -7,6 +7,17 @@
 ![WordPress](https://img.shields.io/badge/Deployment-Production-green)
 
 ## Overview
+
+This project demonstrates a production-style deployment of WordPress on AWS EC2 using Docker Compose and MySQL.
+
+The environment includes:
+- AWS EC2
+- Docker Engine
+- Docker Compose
+- WordPress container
+- MySQL container
+- Public HTTP access on port 80
+  
 # AWS EC2 + Docker WordPress Deployment
 
 Production-ready WordPress deployment using Docker Compose on AWS EC2.
@@ -33,7 +44,25 @@ The infrastructure includes:
 
 Infrastructure Overview
 
-Client → Internet → AWS EC2 → Docker Network → WordPress Container → MySQL Container
+Client → Internet → AWS EC2 → Docker Compose → WordPress Container → MySQL Container
+
+## Troubleshooting
+
+During deployment, I solved the following issues:
+
+- Port 80 conflict caused by Nginx running on the host
+- Docker Compose YAML syntax errors
+- Container name conflicts from previous test environments
+- Docker daemon not running initially
+
+These issues were resolved by stopping conflicting services, fixing the compose file, cleaning old containers, and restarting the environment correctly.
+
+## Result
+
+The WordPress application was successfully deployed and made accessible through the EC2 public IP.
+
+Public URL:
+http://54.236.210.172
 
 ##  Technologies Used
 - AWS EC2
@@ -51,14 +80,17 @@ Client → Internet → AWS EC2 → Docker Network → WordPress Container → M
 5. Deployed WordPress container
 6. Configured port 80 access
    
-## Deployment Process
+## Deployment
 
-1. Launch EC2 instance (Ubuntu 22.04)
-2. Configure Security Group (Ports 22 and 80)
-3. Install Docker from official repository
+The application was deployed using Docker Compose on an Ubuntu-based EC2 instance.
+
+Main steps:
+1. Launch EC2 instance
+2. Configure Security Group
+3. Install Docker
 4. Create docker-compose.yml
-5. Run:
-sudo docker compose up -d
+5. Start containers with Docker Compose
+6. Access WordPress via public IP
 
 ## Manual Deployment vs Docker Compose
 
