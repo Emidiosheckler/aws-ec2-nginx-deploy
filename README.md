@@ -53,7 +53,7 @@ Client → Internet → AWS EC2 → Docker Compose → WordPress Container + MyS
 
 ## Why Docker?
 
-- Docker was used to provide:
+Docker was used to provide:
 - environment consistency
 - easier deployment management
 - service isolation
@@ -61,8 +61,8 @@ Client → Internet → AWS EC2 → Docker Compose → WordPress Container + MyS
 - portability across environments
 
 ## Manual Deployment vs Docker Compose
-Manual setup
 
+Manual setup
 - individual service installation
 - harder maintenance
 - more error-prone reconfiguration
@@ -79,7 +79,7 @@ Manual setup
 - During deployment, I solved the following issues:
 - Port 80 conflict caused by Nginx running on the host
 - Docker Compose YAML syntax errors
-- ontainer naming conflicts from previous test runs
+- Container naming conflicts from previous test runs
 - Docker daemon startup issues
 - Service exposure validation using curl localhost
 
