@@ -1,185 +1,181 @@
-# Production-ready WordPress Deployment with Docker on AWS EC2 
+# Production-ready WordPress Deployment with Docker on AWS EC2
 
-##
 ![AWS](https://img.shields.io/badge/AWS-EC2-orange)
 ![Docker](https://img.shields.io/badge/Docker-Compose-blue)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue)
-![WordPress](https://img.shields.io/badge/Deployment-Production-green)
+![WordPress](https://img.shields.io/badge/WordPress-Latest-21759B)
 
 ## Overview
 
-This project demonstrates a production-style deployment of WordPress on AWS EC2 using Docker Compose and MySQL.
+This project demonstrates a production-style deployment of a WordPress application on AWS EC2 using Docker Compose and MySQL.
 
-The environment includes:
-- AWS EC2
-- Docker Engine
-- Docker Compose
-- WordPress container
-- MySQL container
-- Public HTTP access on port 80
-  
-# AWS EC2 + Docker WordPress Deployment
+The environment was built on an Ubuntu-based EC2 instance and configured to expose the application publicly through port 80.
 
-Production-ready WordPress deployment using Docker Compose on AWS EC2.
+This project demonstrates hands-on experience with:
 
-This project demonstrates how to deploy a WordPress application 
-using Docker containers on an AWS EC2 instance.
-
-The infrastructure includes:
-
+- AWS EC2 provisioning
 - Docker containerization
-- MySQL database container
-- WordPress application container
-- AWS EC2 cloud infrastructure
-- Port exposure for public access
+- Docker Compose orchestration
+- WordPress deployment
+- MySQL database configuration
+- Infrastructure troubleshooting in a cloud environment
+
+---
 
 ## Architecture
 
-- AWS EC2 (Ubuntu)
-- Docker Engine (official repository)
-- Docker Compose v2
-- MySQL 8.0 container
-- WordPress latest container
-- Port 80 exposed via Security Group
+Client → Internet → AWS EC2 → Docker Compose → WordPress Container + MySQL Container
 
-Infrastructure Overview
+---
 
-Client → Internet → AWS EC2 → Docker Compose → WordPress Container → MySQL Container
+## Infrastructure Components
 
-## Troubleshooting
+- AWS EC2
+- Ubuntu 22.04
+- Docker Engine
+- Docker Compose
+- WordPress Latest
+- MySQL 8.0
 
-During deployment, I solved the following issues:
+---
 
-- Port 80 conflict caused by Nginx running on the host
-- Docker Compose YAML syntax errors
-- Container name conflicts from previous test environments
-- Docker daemon not running initially
+## Deployment Process
 
-These issues were resolved by stopping conflicting services, fixing the compose file, cleaning old containers, and restarting the environment correctly.
+The environment was deployed with the following high-level steps:
 
-## Result
+1. Launch an EC2 instance on AWS
+2. Configure the Security Group to allow:
+   - Port 22 (SSH)
+   - Port 80 (HTTP)
+3. Connect to the instance via SSH
+4. Install Docker and Docker Compose
+5. Create the `docker-compose.yml` file
+6. Start the containers with Docker Compose
+7. Validate container health and public access
+
+---
+
+## Deployment Commands
+
+```bash
+sudo systemctl stop nginx
+sudo docker compose up -d
+sudo docker ps
+curl localhost
+````
+##Docker Compose Configuration
+
+-This project uses Docker Compose to orchestrate two services:
+-wordpress_app
+-wordpress_db
+-The WordPress container is exposed publicly on port 80, while MySQL runs internally inside the Docker network.
+
+##Security Configuration
+
+-EC2 Security Group configured with:
+-SSH (Port 22)
+-HTTP (Port 80)
+-Containers isolated inside Docker networking
+-Public access restricted to the application layer only
+
+##Why Docker?
+
+-Docker was used in this project to provide:
+-Environment consistency
+-Easier deployment management
+-Service isolation
+-Faster redeployment
+-Better portability across environments
+
+##Manual Deployment vs Docker Compose
+Manual setup
+-Individual service installation
+-Harder maintenance
+-More error-prone reconfiguration
+-Limited portability
+
+##Docker Compose
+
+-Infrastructure as Code approach
+-Easier service orchestration
+-Faster redeployment
+-Cleaner and more reproducible setup
+
+##Troubleshooting
+
+-During deployment, I solved the following real-world issues:
+-Port 80 conflict caused by Nginx running on the host
+-Docker Compose YAML syntax errors
+-Container naming conflicts from previous test runs
+-Docker daemon startup issues
+-Service exposure validation using curl localhost
+-Validation of running containers with docker ps
+
+##Rollback Procedure
+
+-If deployment fails, the environment can be safely reset using:
+````bash
+sudo docker compose down -v
+sudo docker system prune -a
+````
+This removes containers, networks, volumes, and unused images to allow a clean redeployment.
+
+Local Testing
+
+Before validating the project on AWS EC2, the service behavior can be tested with Docker locally using:
+````bash
+sudo docker compose up
+````
+Then access:
+
+http://localhost
+
+This helps validate container communication and service availability.
+
+##Result
 
 The WordPress application was successfully deployed and made accessible through the EC2 public IP.
 
-Public URL:
-http://54.236.210.172
+Public URL
+http://54.210.157.136/
+Admin URL
+http://[54.210.157.136/]/wp-admin
 
-##  Technologies Used
-- AWS EC2
-- Ubuntu 22.04
-- Docker
-- MySQL 5.7
-- WordPress Latest
+##Screenshots
 
-## 🛠 Deployment Step by Step
+WordPress Home
+WordPress Dashboard
 
-1. Launch an AWS EC2 Ubuntu 22.04 instance  
-2. Install Docker on the instance  
-3. Create Docker network
-4. Deployed MySQL container
-5. Deployed WordPress container
-6. Configured port 80 access
-   
-## Deployment
+##Files Included
 
-The application was deployed using Docker Compose on an Ubuntu-based EC2 instance.
+This repository should contain:
 
-Main steps:
-1. Launch EC2 instance
-2. Configure Security Group
-3. Install Docker
-4. Create docker-compose.yml
-5. Start containers with Docker Compose
-6. Access WordPress via public IP
+-docker-compose.yml
+-README.md
+-DiagramaCLOUDAWS.drawio.png
+-screenshots/wordpress-home.png
+-screenshots/wordpress-dashboard.png
 
-## Manual Deployment vs Docker Compose
+##Lessons Learned
 
-Manual setup:
-- Individual service installation
-- Harder scaling
-- Harder maintenance
+This project helped reinforce practical knowledge in:
 
-Docker Compose:
-- Infrastructure as Code
-- Version-controlled configuration
-- Faster redeployment
-- Portable environment
-   
-  
-## Rollback Procedure
+-EC2 infrastructure setup
+-Docker-based application deployment
+-Multi-container environments
+-Cloud troubleshooting
+-Public service exposure
+-Real deployment debugging workflow
 
-If deployment fails, the environment can be safely reset using:
+##About the Author
 
-```bash
-sudo docker compose down -v
-sudo docker system prune -a
-```
-## Local Testing
-
-Before deploying to AWS EC2, the application was tested locally using:
-
-```bash
-sudo docker compose up
-```
-
-## Deployment Commands Used
-
-```bash
-sudo docker network create wp_network
-
-sudo docker run -d --name wp_db --network wp_network \
-  -e MYSQL_DATABASE=wordpress \
-  -e MYSQL_USER=wp_user \
-  -e MYSQL_PASSWORD=wp_password \
-  -e MYSQL_ROOT_PASSWORD=root_password \
-  mysql:8.0
-
-sudo docker run -d --name wp_app --network wp_network \
-  -p 80:80 \
-  -e WORDPRESS_DB_HOST=wp_db:3306 \
-  -e WORDPRESS_DB_USER=wp_user \
-  -e WORDPRESS_DB_PASSWORD=wp_password \
-  -e WORDPRESS_DB_NAME=wordpress \
-  wordpress
-
-## Live   
-## 🔗 Demo
-Application deployed at:  
-http://IP34.227.75.202
-
-## Security Configuration
-- Configured Security Group to allow HTTP (Port 80)
-- Isolated containers using Docker network
-
-## Why Docker? 
-
-Docker was used to ensure application portability, environment consistency,
-and easier deployment management.
-
-## Challenges Faced
-
-- Port conflict on port 80
-- Docker container naming issues
-- Network connectivity troubleshooting
-
-## Lessons Learned
-- How to manage port conflicts
-- How to connect containers using Docker networks
-- Basic troubleshooting in cloud environments
-
-## About the Author
-
-AWS-focused Cloud Engineer with hands-on experience deploying containerized applications using Docker on EC2.
+AWS-focused Cloud/DevOps beginner with hands-on experience deploying containerized applications on EC2.
 
 This project demonstrates:
-- Infrastructure provisioning on AWS
-- Container networking
-- Service exposure via public IP
-- Production-style application deployment
+
+-Docker-based application deployment
+-MySQL and WordPress container orchestration
+-Public web exposure through EC2
+-Troubleshooting of real infrastructure issues
 
 Open to remote international opportunities.
-
-
-    
-    
-  
