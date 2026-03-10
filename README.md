@@ -89,9 +89,9 @@ During deployment, I solved the following issues:
 The WordPress application was successfully deployed and made accessible through the EC2 public IP.
 
 - Public URL
-- http://54.236.210.172
+- http://54.210.157.136
 - Admin URL
-- http://54.236.210.172/wp-admin
+- http://54.210.157.136/wp-admin
 
 ## Screenshots
 
