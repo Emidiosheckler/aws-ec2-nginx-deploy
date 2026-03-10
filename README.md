@@ -37,12 +37,13 @@ Client → Internet → AWS EC2 → Docker Compose → WordPress Container + MyS
 
 ## Deployment Commands
 
+```` bash
 
 - sudo systemctl stop nginx
 - sudo docker compose up -d
 - sudo docker ps
 - curl localhost
-
+````
 
 ## Security Configuration
 
@@ -62,12 +63,12 @@ Docker was used to provide:
 
 ## Manual Deployment vs Docker Compose
 
-Manual setup
+### Manual setup
 - individual service installation
 - harder maintenance
 - more error-prone reconfiguration
 
-## Docker Compose
+### Docker Compose
 
 - infrastructure as code
 - easier service orchestration
