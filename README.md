@@ -64,7 +64,7 @@ Docker was used to provide:
 ## Manual Deployment vs Docker Compose
 
 ### Manual setup
-- individual service installation
+... individual service installation
 - harder maintenance
 - more error-prone reconfiguration
 
