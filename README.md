@@ -37,13 +37,13 @@ Client → Internet → AWS EC2 → Docker Compose → WordPress Container + MyS
 
 ## Deployment Commands
 
-```` bash
+``` bash
 
-- sudo systemctl stop nginx
-- sudo docker compose up -d
-- sudo docker ps
-- curl localhost
-````
+sudo systemctl stop nginx
+sudo docker compose up -d
+sudo docker ps
+curl localhost
+```
 
 ## Security Configuration
 
@@ -105,6 +105,7 @@ The WordPress application was successfully deployed and made accessible through 
 ## About the Author
 
 AWS-focused Cloud/DevOps beginner with hands-on experience deploying containerized applications on EC2. 
+
 This project demonstrates:
 
 - Docker-based application deployment
